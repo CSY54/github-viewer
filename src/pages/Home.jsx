@@ -45,8 +45,10 @@ function Home() {
     }
 
     const [username, repository] = splitted;
-    console.log({username, repository});
-    if (!isValidUsername(username, repository !== undefined) || !isValidRepository(repository)) {
+    if (
+      !isValidUsername(username, repository !== undefined) ||
+      !isValidRepository(repository)
+    ) {
       return;
     }
 
