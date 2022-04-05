@@ -30,8 +30,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: yarn
-    - run: yarn build --frozen-lockfile
+    - run: yarn install --frozen-lockfile
+    - run: yarn build
     
     - name: GH Pages deploy
       uses: Cecilapp/GitHub-Pages-deploy@3.2.1
