@@ -69,7 +69,7 @@ function Repository() {
                 rightIcon={<Icon as={ArrowRight} />}
                 size="md"
               >
-                View It on GitHub
+                View on GitHub
               </Button>
             </Link>
           </Flex>
