@@ -24,7 +24,7 @@ function Navbar() {
         <Spacer />
         <Box>
           <ButtonGroup spacing="2">
-            <Link href="https://github.com/CSY54" isExternal>
+            <Link href="https://github.com/CSY54/github-viewer" isExternal>
               <IconButton icon={<Icon as={GitHub} />} />
             </Link>
             <IconButton
