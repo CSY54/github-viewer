@@ -10,6 +10,8 @@ import {
   TagLabel,
   TagLeftIcon,
   Text,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react';
 import { Book, Code, Eye, GitBranch, Star } from 'react-feather';
 import PropTypes from 'prop-types';
@@ -83,13 +85,15 @@ function RepositoryDetail({
         </Center>
       )}
       {topics?.length > 0 && (
-        <HStack spacing="2" mt="4">
+        <Wrap mt="4">
           {topics.map((topic) => (
-            <Tag key={topic} size="md" colorScheme="orange">
-              #{topic}
-            </Tag>
+            <WrapItem>
+              <Tag key={topic} size="md" colorScheme="orange">
+                #{topic}
+              </Tag>
+            </WrapItem>
           ))}
-        </HStack>
+        </Wrap>
       )}
     </Box>
   );
