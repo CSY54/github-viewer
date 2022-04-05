@@ -17,11 +17,11 @@ function Home() {
   const [username, setUsername] = useState('');
   const [repository, setRepository] = useState('');
 
-  const isValidUsername = (username) => {
+  const isValidUsername = (username, finalized) => {
     if (
       username.split('-').length > 2 ||
       username[0] === '-' ||
-      username[username.length - 1] === '-' ||
+      (finalized && username[username.length - 1] === '-') ||
       !/^[A-Za-z0-9-]{0,39}$/.test(username)
     ) {
       return false;
@@ -45,7 +45,8 @@ function Home() {
     }
 
     const [username, repository] = splitted;
-    if (!isValidUsername(username) || !isValidRepository(repository)) {
+    console.log({username, repository});
+    if (!isValidUsername(username, repository !== undefined) || !isValidRepository(repository)) {
       return;
     }
 
