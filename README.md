@@ -29,6 +29,24 @@ Other libraries
 
 The response of the GitHub API will be stored in the localStorage for a TTL of 10 minutes.
 
+The component tree is as follow:
+```
+App.jsx
+├── Home.jsx
+├── User.jsx
+│   ├── Banner.jsx
+│   └── RepositoryList.jsx
+│       └── RepositoryCard.jsx
+└── Repository.jsx
+    └── RepositoryDetail.jsx
+```
+
+`App.jsx` uses React Router to navigate through `Home.jsx`, `User.jsx`, and `Repository.jsx`
+The route is as follow:
+- `/`: `Home.jsx`
+- `/users/:username`: `User.jsx`
+- `/users/:username/repos/:repository`: `Repository.jsx`
+
 ## TODO
 
 - [ ] Use `useContext` to save information in order to prevent re-render
