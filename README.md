@@ -1,5 +1,11 @@
 # GitHub Viewer
 
+This project is a homework of Dcard frontend intern.
+
+The project is currently deployed on [github-viewer.csy54.tw](https://github-viewer.csy54.tw).
+
+The document is on [Google Drive](https://drive.google.com/file/d/1niPucGwf9qGEpLokVptK2a1zNeReS8WL/view?usp=sharing).
+
 ## Getting Started
 
 - Using npm
@@ -51,3 +57,4 @@ The route is as follow:
 
 - [ ] Use `useContext` to save information in order to prevent re-render
 - [ ] Reserve position in infinite scroll when navigating back to it
+- [ ] Display single toast on single component
