@@ -19,10 +19,10 @@ function Home() {
 
   const isValidUsername = (username, finalized) => {
     if (
-      username.split('-').length > 2 ||
-      username[0] === '-' ||
-      (finalized && username[username.length - 1] === '-') ||
-      !/^[A-Za-z0-9-]{0,39}$/.test(username)
+      username.startsWith('-') ||
+      (finalized && username.endsWith('-')) ||
+      username.includes('--') ||
+      !/^[a-z0-9-]{0,39}$/i.test(username)
     ) {
       return false;
     }
@@ -33,34 +33,45 @@ function Home() {
   const isValidRepository = (repository) =>
     repository === '' || /^[0-9A-Za-z-_.]{1,100}$/.test(repository);
 
+  const parseInput = (input) => {
+    if (input[0] === '/') {
+      return [true, {}];
+    }
+
+    const splitted = input.split('/');
+    if (splitted.length > 2) {
+      return [true, {}];
+    }
+
+    const [username, repository] = splitted;
+    if (
+      isValidUsername(username, repository !== undefined) &&
+      isValidRepository(repository)
+    ) {
+      return [false, { username, repository }];
+    }
+
+    return [true, {}];
+  };
+
   const handleChange = (event) => {
     const { value } = event.target;
     if (value[0] === '/') {
       return;
     }
 
-    const splitted = value.split('/');
-    if (splitted.length > 2) {
-      return;
+    const [error, { username, repository }] = parseInput(value);
+    if (!error) {
+      setInput(value);
+      setUsername(username);
+      setRepository(repository);
     }
-
-    const [username, repository] = splitted;
-    if (
-      !isValidUsername(username, repository !== undefined) ||
-      !isValidRepository(repository)
-    ) {
-      return;
-    }
-
-    setInput(value);
-    setUsername(username);
-    setRepository(repository);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (repository === undefined) {
+    if (repository === undefined || repository === '') {
       navigate(`/users/${username}`);
     } else {
       navigate(`/users/${username}/repos/${repository}`);
