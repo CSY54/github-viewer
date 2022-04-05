@@ -37,6 +37,9 @@ function Repository() {
             isClosable: true,
             duration: 3000,
           });
+
+          navigate('/');
+
           break;
 
         default:
